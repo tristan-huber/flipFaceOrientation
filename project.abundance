@@ -1,13 +1,66 @@
 {
-    "atomType": "Molecule",
-    "x": 0,
-    "y": 0,
-    "uniqueID": "id-37421",
-    "name": "flipFaceOrientation",
-    "topLevel": true,
-    "allAtoms": [],
-    "allConnectors": [],
-    "unitsKey": "Unitless",
-    "fileTypeVersion": 1,
-    "filetypeVersion": 1
+  "atomType": "Molecule",
+  "x": 0,
+  "y": 0,
+  "uniqueID": "id-37421",
+  "name": "flipFaceOrientation",
+  "ioValues": [
+    {
+      "name": "faceAssembly",
+      "ioValue": "__GEOMETRY_INPUT__"
+    }
+  ],
+  "topLevel": true,
+  "allAtoms": [
+    {
+      "atomType": "Output",
+      "x": 0.98,
+      "y": 0.5,
+      "uniqueID": "id-37422",
+      "ioValues": [
+        {
+          "name": "number or geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
+    },
+    {
+      "atomType": "Code",
+      "x": 0.3951822916666667,
+      "y": 0.52,
+      "uniqueID": "id-37424",
+      "ioValues": [
+        {
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "function run(shape: Assembly) {\n  return shape.onLeafs((leaf) => {\n    if (leaf.geometry instanceof replicad.Face) {\n      leaf.geometry = leaf.geometry.flipOrientation()\n    }\n    return leaf;\n  })\n}",
+      "compiledCode": "\"use strict\";\nfunction run(shape) {\n    return shape.onLeafs((leaf) => {\n        if (leaf.geometry instanceof replicad.Face) {\n            leaf.geometry = leaf.geometry.flipOrientation();\n        }\n        return leaf;\n    });\n}\n"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.025384615384615384,
+      "y": 0.38857142857142857,
+      "uniqueID": "id-37434",
+      "name": "faceAssembly",
+      "type": "geometry"
+    }
+  ],
+  "allConnectors": [
+    {
+      "ap2Name": "number or geometry",
+      "ap1ID": "id-37424",
+      "ap2ID": "id-37422"
+    },
+    {
+      "ap2Name": "shape",
+      "ap1ID": "id-37434",
+      "ap2ID": "id-37424"
+    }
+  ],
+  "unitsKey": "Unitless",
+  "fileTypeVersion": 1,
+  "filetypeVersion": 1
 }
